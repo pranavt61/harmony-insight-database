@@ -7,7 +7,7 @@ What is the Harmony ONE Explorer?
 [Harmony](https://www.harmony.one/) is a fast and secure blockchain for decentralized applications.
 Our production mainnet supports 4 shards of 1000 nodes, producing blocks in 5 seconds with finality.
 
-[The Explorer](http://54.212.182.221:8080/#/) allows users from all backgrounds to view and explorer the Harmony Blockchain by
+[The Explorer](http://54.187.20.215/:8080/#/) allows users from all backgrounds to view and explorer the Harmony Blockchain by
 making visible the latest blocks, pending transactions, top validators, and much more!
 
 ## Requirments

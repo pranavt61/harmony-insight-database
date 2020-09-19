@@ -24,8 +24,15 @@ func StartHttpServer() {
 	server := &Server{}
 	router := mux.NewRouter()
 
+	// BlockTransactionCount
 	router.HandleFunc("/block_transaction_count", handleBlockTransactionCount)
 	router.HandleFunc("/max_block_height_block_transaction_count", handleMaxBlockHeightBlockTransactionCount)
+
+	// UserVisits
+	router.HandleFunc("/user_visits", handleUserVisits)
+
+	// Validators
+	router.HandleFunc("/validator_by_address", handleValidatorByAddress)
 
 	server.router = router
 

@@ -41,14 +41,13 @@ func RequestAndStoreBlockTransactionCount(shard_id int, block_height int) {
 	resp_body_buffer := new(bytes.Buffer)
 	resp_body_buffer.ReadFrom(resp.Body)
 
-	if len(resp_body_buffer.Bytes()) == 0 {
+	var resp_body_gen interface{}
+	json.Unmarshal(resp_body_buffer.Bytes(), &resp_body_gen)
+	resp_body, ok := resp_body_gen.(map[string]interface{})
+	if ok == false {
 		// no block at height
 		return
 	}
-
-	var resp_body_gen interface{}
-	json.Unmarshal(resp_body_buffer.Bytes(), &resp_body_gen)
-	resp_body := resp_body_gen.(map[string]interface{})
 
 	tx_count := int(resp_body["result"].(float64))
 

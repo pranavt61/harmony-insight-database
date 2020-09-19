@@ -1,5 +1,3 @@
-<img align="right" width="400" height="400" src="src/assets/logo.png">
-
 Harmony Explorer Backend
 =======
 
@@ -17,10 +15,13 @@ making visible the latest blocks, pending transactions, top validators, and much
 1) Install latest version of [Go](https://golang.org/dl/)
 
 2) Install [mySQL](https://www.mysql.com/) database
-  - Default location is localhost:3306. (Change in './sql/ManageConnection.go')
+  - Default location is localhost:3306 (Change in './sql/ManageConnection.go')
   - Default user in root:password@tcp (Change in './sql/ManageConnection.go')
 
 3) Make sure Harmony's nodes are up and running. Check [API guide](https://api.hmny.io/)
+
+4) Made sure port 8081 is unused. 
+  - Used by dataServer (Change in './dataServer/Server.go')
 
 ## Build Setup
 

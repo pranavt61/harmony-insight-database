@@ -10,6 +10,14 @@ CREATE TABLE IF NOT EXISTS BlockTransactionCount (
     PRIMARY KEY (shard_id, block_height)
 );
 
+CREATE TABLE IF NOT EXISTS BlockGasUsed (
+    shard_id      TINYINT UNSIGNED,
+    block_height  INT UNSIGNED,
+    gas_used      MEDIUMINT UNSIGNED,
+
+    PRIMARY KEY (shard_id, block_height)
+);
+
 CREATE TABLE IF NOT EXISTS UserVisits (
   request_type  VARCHAR(7),
   user_ip       VARCHAR(21),

@@ -38,6 +38,9 @@ func StartHttpServer() {
 	// Validators
 	router.HandleFunc("/validator_by_address", handleValidatorByAddress)
 
+	// Blocks
+	router.HandleFunc("/block_hash_by_number", handleBlockHashByNumber)
+
 	server.router = router
 
 	http.Handle("/", server)

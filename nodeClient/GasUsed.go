@@ -54,7 +54,13 @@ func RequestAndStoreBlockGasUsed(shard_id int, block_height int) {
 		return
 	}
 
-	gas_used := int(resp_body["result"].(map[string]interface{})["gasUsed"].(float64))
+	result, ok := resp_body["result"].(map[string]interface{})
+	if ok == false {
+		// no block at height
+		return
+	}
+
+	gas_used := int(result["gasUsed"].(float64))
 
 	// Store in DB
 	if gas_used > 0 {

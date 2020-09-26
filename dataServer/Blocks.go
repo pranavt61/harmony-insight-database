@@ -19,6 +19,8 @@ func handleBlockHashByNumber(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			fmt.Fprintf(w, "Error parsing GET parameters 'block_height'")
+
+			return
 		}
 	}
 

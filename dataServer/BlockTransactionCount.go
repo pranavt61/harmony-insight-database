@@ -20,6 +20,7 @@ func handleBlockTransactionCount(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			fmt.Fprintf(w, "Error parsing GET parameters 'min_block_height'")
+			return
 		}
 	}
 
@@ -29,6 +30,7 @@ func handleBlockTransactionCount(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Error parsing rows\n")
+		return
 	}
 
 	w.Write(rows_bytes)

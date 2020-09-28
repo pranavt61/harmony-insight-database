@@ -36,6 +36,12 @@ func RoutineStartDataServer() {
 func RoutineBlockTransactionCount(shard_id int) {
 	for {
 		current_block_height := nodeClient.RequestBlockNumber(shard_id)
+		if current_block_height == -1 {
+			// error with client
+			// retry in 5 seconds
+			time.Sleep(5 * time.Second)
+		}
+
 		start_block_height := sql.SelectMaxHeightBlockTransactionCount(shard_id) + 1
 
 		for height_i := start_block_height; height_i < current_block_height; height_i++ {
@@ -55,6 +61,12 @@ func RoutineBlockTransactionCount(shard_id int) {
 func RoutineBlockGasUsed(shard_id int) {
 	for {
 		current_block_height := nodeClient.RequestBlockNumber(shard_id)
+		if current_block_height == -1 {
+			// error with client
+			// retry in 5 seconds
+			time.Sleep(5 * time.Second)
+		}
+
 		start_block_height := sql.SelectMaxHeightBlockGasUsed(shard_id) + 1
 
 		for height_i := start_block_height; height_i < current_block_height; height_i++ {

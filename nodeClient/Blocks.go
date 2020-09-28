@@ -39,7 +39,11 @@ func RequestBlockNumber(shard_id int) int {
 
 	var resp_body_gen interface{}
 	json.Unmarshal(resp_body_buffer.Bytes(), &resp_body_gen)
-	resp_body := resp_body_gen.(map[string]interface{})
+	resp_body, ok := resp_body_gen.(map[string]interface{})
+	if ok == false {
+		// no block number ?
+		return -1
+	}
 
 	block_number := int(resp_body["result"].(float64))
 

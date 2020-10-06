@@ -43,9 +43,17 @@ func RequestAndStoreValidators() {
 
 	var resp_body_gen interface{}
 	json.Unmarshal(resp_body_buffer.Bytes(), &resp_body_gen)
-	resp_body := resp_body_gen.(map[string]interface{})
+	resp_body, ok := resp_body_gen.(map[string]interface{})
+	if ok == false {
+		// no validators
+		return
+	}
 
-	validators_list := resp_body["result"].([]interface{})
+	validators_list, ok := resp_body["result"].([]interface{})
+	if ok == false {
+		// no validators
+		return
+	}
 
 	max_len_n := 0
 	max_len_w := 0

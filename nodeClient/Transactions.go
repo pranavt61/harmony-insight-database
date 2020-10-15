@@ -49,12 +49,16 @@ func RequestAndStoreBlockTransactionCount(shard_id int, block_height int) {
 		return
 	}
 
-	tx_count := int(resp_body["result"].(float64))
+	tx_count, ok := resp_body["result"].(float64)
+  if ok == false {
+    // no block at height
+    return
+  }
 
 	// Store in DB
-	if tx_count > 0 {
-		fmt.Printf("SHARD %d - BLOCK %d - COUNT %d\n", shard_id, block_height, tx_count)
-		sql.InsertBlockTransactionCount(shard_id, block_height, tx_count)
+	if int(tx_count) > 0 {
+		fmt.Printf("SHARD %d - BLOCK %d - COUNT %d\n", shard_id, block_height, int(tx_count))
+		sql.InsertBlockTransactionCount(shard_id, block_height, int(tx_count))
 	}
 
 	return

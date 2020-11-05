@@ -13,7 +13,7 @@ func handlePendingTransactions(w http.ResponseWriter, r *http.Request) {
   shard_id := 0
   var err error
 
-	shard_id_string := r.URL.Query().Get("block_height")
+	shard_id_string := r.URL.Query().Get("shard_id")
 	if shard_id_string != "" {
 		shard_id, err = strconv.Atoi(shard_id_string)
 		if err != nil {

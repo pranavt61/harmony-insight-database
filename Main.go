@@ -17,10 +17,12 @@ func main() {
 
 	go RoutineBlockTransactionCount(0)
 	go RoutineBlockTransactionCount(1)
+	go RoutineBlockTransactionCount(2)
 	go RoutineBlockTransactionCount(3)
 
 	go RoutineBlockGasUsed(0)
 	go RoutineBlockGasUsed(1)
+	go RoutineBlockGasUsed(2)
 	go RoutineBlockGasUsed(3)
 
 	go RoutineValidators()

@@ -32,6 +32,9 @@ func StartHttpServer() {
 	router.HandleFunc("/block_gas_used", handleBlockGasUsed)
 	router.HandleFunc("/max_block_height_block_gas_used", handleMaxBlockHeightBlockGasUsed)
 
+	// Pending Transactions
+	router.HandleFunc("/pending_transactions", handlePendingTransactions)
+
 	// UserVisits
 	router.HandleFunc("/user_visits", handleUserVisits)
 

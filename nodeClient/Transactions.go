@@ -103,16 +103,8 @@ func RequestPendingTransactions(shard_id int) string {
 	defer resp.Body.Close()
 
 	// Read response
-	resp_body_buffer := new(bytes.Buffer)
-	resp_body_buffer.ReadFrom(resp.Body)
+	resp_string := new(bytes.Buffer)
+	resp_string.ReadFrom(resp.Body)
 
-	var resp_body_gen interface{}
-	json.Unmarshal(resp_body_buffer.Bytes(), &resp_body_gen)
-	resp_body, ok := resp_body_gen.(map[string]interface{})
-	if ok == false {
-		// no block number ?
-		return ""
-	}
-
-  return fmt.Sprintf("%v", resp_body["result"])
+  return resp_string.String()
 }

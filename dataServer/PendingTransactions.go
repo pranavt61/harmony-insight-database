@@ -24,7 +24,6 @@ func handlePendingTransactions(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-  pending_txs := nodeClient.RequestPendingTransactions(shard_id)
-
-  fmt.Fprintf(w, `{"pending_txs": %s}`, pending_txs)
+  pending_txs :=  nodeClient.RequestPendingTransactions(shard_id)
+  fmt.Fprintf(w, pending_txs)
 }
